@@ -95,11 +95,12 @@ weights = {
 ```
 
 Reward Components:
+```
 Waiting Time Penalty: -sum(vehicle_wait_times) / 100
 Queue Length Penalty: -number_of_stopped_vehicles
 Throughput Reward: +vehicles_passed_through
 Emergency Bonus: +100 for successfully handling emergency vehicles
-
+``` 
 **## Q-Learning parameters**
 alpha = 0.1   # Learning rate: How much to update Q-values
 gamma = 0.95  # Discount factor: Importance of future rewards
