@@ -80,20 +80,36 @@ state = (
     ew_emergency,    # Emergency vehicle present in EW (0/1)
     current_phase    # Current traffic light phase
 )
+```
 
-** ## Reward Function**
+**## Reward Function**
+```python
+weights = {
+    'waiting': 0.4,    # Reduces waiting time
+    'queue': 0.3,      # Minimizes queue length
+    'throughput': 0.2, # Maximizes vehicle flow
+    'emergency': 0.1   # Handles emergency vehicles
+}
+```
+
 Reward Components:
 Waiting Time Penalty: -sum(vehicle_wait_times) / 100
 Queue Length Penalty: -number_of_stopped_vehicles
 Throughput Reward: +vehicles_passed_through
 Emergency Bonus: +100 for successfully handling emergency vehicles
 
-** ## Q-Learning parameters**
+**## Q-Learning parameters**
 alpha = 0.1   # Learning rate: How much to update Q-values
 gamma = 0.95  # Discount factor: Importance of future rewards
 epsilon = 0.1 # Exploration rate: Chance of trying new actions
 
-** ## Action Selection**
+**## Action Selection**
+```python
+if random.random() < epsilon:
+    action = random.randint(0, num_actions - 1)  # Explore
+else:
+    action = max(q_table[state], key=q_table[state].get) # Exploit
+```
 Uses ε-greedy policy:
-With probability ε: Explore (random action)
-With probability 1-ε: Exploit (best known action)
+- With probability ε: Explore (random action)
+- With probability 1-ε: Exploit (best known action)
