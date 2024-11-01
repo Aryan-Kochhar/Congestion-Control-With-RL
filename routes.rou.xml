@@ -1,0 +1,95 @@
+<routes>
+    <!-- Vehicle Types -->
+    <vType id="car" accel="2.5" decel="6.0" sigma="0.5" length="5" minGap="5.0" maxSpeed="10" guiShape="passenger"/>
+    
+    <vType id="emergency" 
+       accel="3.0" 
+       decel="4.5" 
+       sigma="0.5" 
+       length="6" 
+       minGap="2.5"
+       maxSpeed="15" 
+       guiShape="emergency" 
+       vClass="emergency" 
+       color="255,0,0"
+       speedFactor="1.5" 
+       laneChangeModel="LC2013" 
+       latAlignment="center"
+       carFollowModel="IDM"
+       jmCrossingGap="3"
+       jmDriveAfterRedTime="0"
+       jmIgnoreKeepClearTime="0"
+       impatience="1"/>
+
+    <!-- Regular flows - keeping the same as your original -->
+    <flow id="flow_0" type="car" begin="0" end="36000" vehsPerHour="100" from="A0A1" to="E3E4">
+        <route edges="A0A1 A1B1 B1C1 C1D1 D1E1 E1E2 E2E3 E3E4"/>
+    </flow>
+    <flow id="flow_1" type="car" begin="0" end="36000" vehsPerHour="100" from="A0B0" to="E3E4">
+        <route edges="A0B0 B0C0 C0D0 D0E0 E0E1 E1E2 E2E3 E3E4"/>
+    </flow>
+    <flow id="flow_2" type="car" begin="0" end="36000" vehsPerHour="75" from="A1A2" to="D3D4">
+        <route edges="A1A2 A2B2 B2C2 C2D2 D2D3 D3D4"/>
+    </flow>
+    <flow id="flow_3" type="car" begin="0" end="36000" vehsPerHour="85" from="B0C0" to="E2E3">
+        <route edges="B0C0 C0D0 D0E0 E0E1 E1E2 E2E3"/>
+    </flow>
+    <flow id="flow_4" type="car" begin="0" end="36000" vehsPerHour="90" from="E0E1" to="A3A4">
+        <route edges="E0E1 E1D1 D1C1 C1B1 B1A1 A1A2 A2A3 A3A4"/>
+    </flow>
+    <flow id="flow_5" type="car" begin="0" end="36000" vehsPerHour="100" from="E0D0" to="A3A4">
+        <route edges="E0D0 D0C0 C0B0 B0A0 A0A1 A1A2 A2A3 A3A4"/>
+    </flow>
+    <flow id="flow_6" type="car" begin="0" end="36000" vehsPerHour="85" from="E3E2" to="B1B0">
+        <route edges="E3E2 E2D2 D2C2 C2B2 B2B1 B1B0"/>
+    </flow>
+    <flow id="flow_7" type="car" begin="0" end="36000" vehsPerHour="85" from="D4C4" to="B2B1">
+        <route edges="D4C4 C4B4 B4B3 B3B2 B2B1"/>
+    </flow>
+
+    <!-- Emergency vehicle routes -->
+    <!-- East-West Routes -->
+    <route id="emergency_route_1" edges="A0A1 A1B1 B1C1 C1D1 D1E1"/>
+    <route id="emergency_route_2" edges="E0D0 D0C0 C0B0 B0A0"/>
+    <!-- North-South Routes -->
+    <route id="emergency_route_3" edges="A1A2 A2B2 B2C2 C2D2 D2E2"/>
+    <route id="emergency_route_4" edges="E3E2 E2D2 D2C2 C2B2 B2A2"/>
+    <!-- Diagonal Routes -->
+    <route id="emergency_route_5" edges="A0A1 A1A2 A2B2 B2C2 C2D2 D2E2"/>
+    <route id="emergency_route_6" edges="E3E2 E2E1 E1D1 D1C1 C1B1 B1A1"/>
+    <!-- Cross Routes -->
+    <route id="emergency_route_7" edges="C0C1 C1C2 C2C3 C3C4"/>
+    <route id="emergency_route_8" edges="B0B1 B1B2 B2B3 B3B4"/>
+    
+    <!-- Emergency vehicles with varied routes and timing -->
+    <vehicle id="emergency_1" type="emergency" depart="30" departSpeed="max" route="emergency_route_1"/>
+    <vehicle id="emergency_2" type="emergency" depart="70" departSpeed="max" route="emergency_route_3"/>
+    <vehicle id="emergency_3" type="emergency" depart="100" departSpeed="max" route="emergency_route_5"/>
+    <vehicle id="emergency_4" type="emergency" depart="140" departSpeed="max" route="emergency_route_2"/>
+    <vehicle id="emergency_5" type="emergency" depart="180" departSpeed="max" route="emergency_route_7"/>
+    <vehicle id="emergency_6" type="emergency" depart="220" departSpeed="max" route="emergency_route_4"/>
+    <vehicle id="emergency_7" type="emergency" depart="270" departSpeed="max" route="emergency_route_6"/>
+    <vehicle id="emergency_8" type="emergency" depart="330" departSpeed="max" route="emergency_route_8"/>
+    <vehicle id="emergency_9" type="emergency" depart="380" departSpeed="max" route="emergency_route_2"/>
+    <vehicle id="emergency_10" type="emergency" depart="440" departSpeed="max" route="emergency_route_5"/>
+    <vehicle id="emergency_11" type="emergency" depart="500" departSpeed="max" route="emergency_route_3"/>
+    <vehicle id="emergency_12" type="emergency" depart="570" departSpeed="max" route="emergency_route_7"/>
+    <vehicle id="emergency_13" type="emergency" depart="650" departSpeed="max" route="emergency_route_4"/>
+    <vehicle id="emergency_14" type="emergency" depart="700" departSpeed="max" route="emergency_route_1"/>
+    <vehicle id="emergency_15" type="emergency" depart="770" departSpeed="max" route="emergency_route_6"/>
+    <vehicle id="emergency_16" type="emergency" depart="820" departSpeed="max" route="emergency_route_8"/>
+    <vehicle id="emergency_17" type="emergency" depart="900" departSpeed="max" route="emergency_route_2"/>
+    <vehicle id="emergency_18" type="emergency" depart="970" departSpeed="max" route="emergency_route_5"/>
+    <vehicle id="emergency_19" type="emergency" depart="1030" departSpeed="max" route="emergency_route_3"/>
+    <vehicle id="emergency_20" type="emergency" depart="1100" departSpeed="max" route="emergency_route_7"/>
+    <vehicle id="emergency_21" type="emergency" depart="1200" departSpeed="max" route="emergency_route_4"/>
+    <vehicle id="emergency_22" type="emergency" depart="1300" departSpeed="max" route="emergency_route_6"/>
+    <vehicle id="emergency_23" type="emergency" depart="1400" departSpeed="max" route="emergency_route_1"/>
+    <vehicle id="emergency_24" type="emergency" depart="1500" departSpeed="max" route="emergency_route_8"/>
+    <vehicle id="emergency_25" type="emergency" depart="1600" departSpeed="max" route="emergency_route_2"/>
+    <vehicle id="emergency_26" type="emergency" depart="1800" departSpeed="max" route="emergency_route_5"/>
+    <vehicle id="emergency_27" type="emergency" depart="2000" departSpeed="max" route="emergency_route_3"/>
+    <vehicle id="emergency_28" type="emergency" depart="2200" departSpeed="max" route="emergency_route_7"/>
+    <vehicle id="emergency_29" type="emergency" depart="2300" departSpeed="max" route="emergency_route_4"/>
+    <vehicle id="emergency_30" type="emergency" depart="2400" departSpeed="max" route="emergency_route_6"/>
+</routes>
