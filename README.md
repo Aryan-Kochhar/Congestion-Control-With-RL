@@ -102,9 +102,9 @@ Throughput Reward: +vehicles_passed_through
 Emergency Bonus: +100 for successfully handling emergency vehicles
 ``` 
 **## Q-Learning parameters**
-alpha = 0.1   # Learning rate: How much to update Q-values
-gamma = 0.95  # Discount factor: Importance of future rewards
-epsilon = 0.1 # Exploration rate: Chance of trying new actions
+- alpha = 0.1   # Learning rate: How much to update Q-values
+- gamma = 0.95  # Discount factor: Importance of future rewards
+- epsilon = 0.1 # Exploration rate: Chance of trying new actions
 
 **## Action Selection**
 ```python
