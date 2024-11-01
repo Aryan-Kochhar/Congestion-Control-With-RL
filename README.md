@@ -19,12 +19,12 @@ Traditional fixed-time traffic signals often struggle with varying traffic patte
 - Python 3.7 or newer
 - TraCI for Python
 
-## Structure 
-├── complete.py           # Main simulation logic
-├── routes.rou.xml        # Vehicle routes
-├── simulation.sumocfg    # SUMO config
-├── grid_with_tls.net.xml # Road network
-└── gui-settings.xml      # Visualization settings
+📦 Structure :)
+├── 📜 complete.py            # Main simulation logic and RL implementation
+├── 📜 routes.rou.xml         # Vehicle and emergency routes definition
+├── 📜 simulation.sumocfg     # SUMO configuration and parameters
+├── 📜 grid_with_tls.net.xml  # Road network and traffic light layout
+└── 📜 gui-settings.xml       # Visualization and GUI settings
 
 Key Features are: 
 - Smart Traffic Control: Signals adjust based on actual traffic, not fixed timings
