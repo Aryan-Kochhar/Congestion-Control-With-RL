@@ -58,3 +58,42 @@ The system uses three main components:
 Issues that i have came across: 
 Signal Flickering: If you notice rapid signal changes, adjust the minimum phase duration by increasing it a bit.
 Emergency Vehicle Detection: Sometimes emergency vehicles might get stuck. 
+
+
+# Reinforcement Learning Implementation
+
+## Overview
+The traffic management system uses Q-learning, a model-free reinforcement learning algorithm, to optimize traffic signal timings. The system learns from experience to minimize waiting times and maximize traffic flow while ensuring emergency vehicle priority.
+
+## State Space
+The state representation captures the traffic situation at each intersection:
+
+```python
+state = (
+    ns_queue,        # Number of vehicles waiting in NS direction (0-10)
+    ns_wait_time,    # Normalized waiting time for NS direction (0-10)
+    ns_vehicles,     # Total vehicles in NS direction (0-10)
+    ns_emergency,    # Emergency vehicle present in NS (0/1)
+    ew_queue,        # Number of vehicles waiting in EW direction (0-10)
+    ew_wait_time,    # Normalized waiting time for EW direction (0-10)
+    ew_vehicles,     # Total vehicles in EW direction (0-10)
+    ew_emergency,    # Emergency vehicle present in EW (0/1)
+    current_phase    # Current traffic light phase
+)
+
+** ## Reward Function**
+Reward Components:
+Waiting Time Penalty: -sum(vehicle_wait_times) / 100
+Queue Length Penalty: -number_of_stopped_vehicles
+Throughput Reward: +vehicles_passed_through
+Emergency Bonus: +100 for successfully handling emergency vehicles
+
+** ## Q-Learning parameters**
+alpha = 0.1   # Learning rate: How much to update Q-values
+gamma = 0.95  # Discount factor: Importance of future rewards
+epsilon = 0.1 # Exploration rate: Chance of trying new actions
+
+** ## Action Selection**
+Uses ε-greedy policy:
+With probability ε: Explore (random action)
+With probability 1-ε: Exploit (best known action)
